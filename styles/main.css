@@ -2,7 +2,8 @@
     - Root
     - Content
       - Content - General Styling
-      - Content - Layout
+      - Content - Content
+      - Content - Animations
     - Utility
       - Utility - Colours
       - Utility - Background Colours
@@ -250,7 +251,7 @@ a:where(:hover, :focus, :focus-visible) {
   background-color: var(--clr-primary-500);
 }
 
-/** Content - Layout **/
+/** Content - Content **/
 .dialog {
   --dialog-decoration-size: clamp(var(--size-v-400), 5vw + 5em, var(--size-v-600));
 
@@ -287,15 +288,28 @@ a:where(:hover, :focus, :focus-visible) {
 }
 
 .dialog__heading {
-  font-size: clamp(var(--fz-900), 5vw + 5em, var(--fz-1200));
+  font-size: clamp(var(--fz-900), 5vw + 5em, var(--fz-800));
+}
+
+.dialog__body {
+  position: relative;
+  padding: clamp(var(--size-v-400), 5vw + 5em, var(--size-v-800));
 }
 
 .dialog__content {
   font-size: clamp(var(--fz-500), 5vw + 5em, var(--fz-800));
+  opacity: 0;
 }
 
 .dialog__content p:not(:last-child) {
   margin-bottom: clamp(var(--size-v-400), 5vw + 5em, var(--size-v-600));
+}
+
+.dialog__loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .dialog__loader__icon {
@@ -332,6 +346,42 @@ a:where(:hover, :focus, :focus-visible) {
   background-color: var(--clr-primary-500);
 }
 
+/** Content - Animations **/
+.dialog__content-animation {
+  animation: content-animation 1s forwards;
+}
+
+@keyframes content-animation {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.dialog__loader-animation {
+  animation: loader-animation 1s forwards;
+}
+
+@keyframes loader-animation {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
 
 /** Content - End **/
 
