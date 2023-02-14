@@ -25,12 +25,10 @@ async function getRandomJoke(url) {
         const response = await fetch(url)
         const data = await response.json()
         const { joke } = data
-        console.log(joke)
 
         let contentHtml = ``
         if (joke && joke.text) {
             const parts = joke.text.split(/\r\n\r\n/)
-            console.log(parts)
             parts.forEach(part => contentHtml += `<p>${part}</p>`)
             jokeContentEl.innerHTML = contentHtml
 
