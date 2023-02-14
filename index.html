@@ -27,16 +27,26 @@
     <link rel="stylesheet" href="./styles/main.css" />
 
     <script defer src="./scripts/main.js"></script>
+    <script defer src="https://kit.fontawesome.com/6c0a4e7a8f.js" crossorigin="anonymous"></script>
   </head>
-  <body>
-    <main class="container dialog">
-      <h1 class="dialog__heading">Joke of the Day</h1>
+  <body class="body-grid | text-secondary-900 bg-accent-400">
+    <main class="dialog | bg-secondary-400 ta-center p-v-400">
+      <h1 class="dialog__heading ff-heading">Joke of the Day</h1>
 
-      <div class="dialog__content" data-element="joke-body">
-        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta. Donec rutrum congue leo eget malesuada. Nulla quis lorem ut libero malesuada feugiat. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.
+      <div class="dialog__body" data-element="joke-body">
+        <div class="dialog__content | d-none" data-element="joke-content">
+          <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta. Donec rutrum congue leo eget malesuada. Nulla quis lorem ut libero malesuada feugiat. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.</p>
+
+          <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta. Donec rutrum congue leo eget malesuada. Nulla quis lorem ut libero malesuada feugiat. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.</p>
+        </div>
+        <div class="dialog__loader | ta-center" data-element="joke-loader">
+          <div class="dialog__loader__icon | text-primary-900 bg-primary-400"><i class="fa-solid fa-circle-notch fa-spin"></i></div>
+        </div>
       </div>
 
-      <button type="button" class="btn btn-dialog__button">Get Another Joke!</button>
+      <div class="dialog__btn-container">
+        <button type="button" class="btn btn-dialog" data-element="joke-button">Get Another Joke!</button>
+      </div>
     </main>
   </body>
 </html>
