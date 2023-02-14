@@ -34,6 +34,8 @@
 
   --clr-accent-400: hsl(0, 96%, 89%);
 
+  --clr-focus-400: hsl(14, 100%, 57%);
+
   --clr-gray-50: hsl(0, 0%, 100%);
   --clr-gray-100: hsl(0, 0%, 90%);
   --clr-gray-200: hsl(0, 0%, 80%);
@@ -155,6 +157,10 @@ body {
   margin-inline: auto;
 }
 
+:focus {
+  outline: thick dashed var(--clr-focus-400);
+}
+
 a {
   --clr-link: var(--clr-gray-1000);
   --clr-hover-link: var(--clr-gray-900);
@@ -187,10 +193,12 @@ a:where(:hover, :focus, :focus-visible) {
   --btn-padding: 0;
   --btn-border-radius: 0;
   --btn-fz: var(--fz-400);
+  --btn-gap: var(--size-v-100);
 
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  gap: var(--btn-gap);
   padding: var(--btn-padding);
   color: var(--btn-clr);
   background-color: var(--btn-bg-clr);
@@ -225,7 +233,7 @@ a:where(:hover, :focus, :focus-visible) {
 
   --btn-padding: var(--size-v-400) var(--size-v-600);
   --btn-border-radius: 100vmax;
-  --btn-fz: clamp(var(--fz-400), 5vw + 5em, var(--fz-600));
+  --btn-fz: clamp(var(--fz-400), 3vw + 0.5rem, var(--fz-700));
 
   --btn-decoration-size: clamp(var(--size-v-50), 5vw + 5em, var(--size-v-200));
 
@@ -251,16 +259,51 @@ a:where(:hover, :focus, :focus-visible) {
   background-color: var(--clr-primary-500);
 }
 
+.btn-dialog[disabled] {
+  --btn-clr: var(--clr-gray-600);
+  --btn-bg-clr: var(--clr-gray-400);
+  --btn-border-clr: var(--clr-gray-600);
+
+  --btn-hover-clr: var(--clr-gray-600);
+  --btn-hover-bg-clr: var(--clr-gray-400);
+  --btn-hover-border-clr: var(--clr-gray-600);
+
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-dialog[disabled]::before {
+  background-color: var(--clr-gray-300);
+}
+
+.btn-dialog[disabled]::after {
+  background-color: var(--clr-gray-500);
+}
+
+[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn .fa-spin {
+  display: none !important;
+}
+
+[disabled] .fa-spin {
+  display: inline-block !important;
+}
+
 /** Content - Content **/
 .dialog {
   --dialog-decoration-size: clamp(var(--size-v-400), 5vw + 5em, var(--size-v-600));
 
   display: grid;
   grid-template-rows: 0.2fr 0.6fr 0.2fr;
-  align-items: center;
-  min-width: 50ch;
+  place-items: center;
+  min-width: 30ch;
   max-width: 200ch;
   min-height: 80vh;
+  margin-inline: auto;
   padding-top: var(--dialog-decoration-size);
   padding-bottom: var(--dialog-decoration-size);
   border: thick solid var(--clr-secondary-900);
@@ -288,21 +331,21 @@ a:where(:hover, :focus, :focus-visible) {
 }
 
 .dialog__heading {
-  font-size: clamp(var(--fz-900), 5vw + 5em, var(--fz-800));
+  font-size: clamp(var(--fz-700), 5vw + 0.5rem, var(--fz-1200));
 }
 
 .dialog__body {
   position: relative;
-  padding: clamp(var(--size-v-400), 5vw + 5em, var(--size-v-800));
+  padding: clamp(var(--size-v-400), 3vw + 0.5rem, var(--size-v-800));
 }
 
 .dialog__content {
-  font-size: clamp(var(--fz-500), 5vw + 5em, var(--fz-800));
+  font-size: clamp(var(--fz-400), 3vw + 0.5rem, var(--fz-700));
   opacity: 0;
 }
 
 .dialog__content p:not(:last-child) {
-  margin-bottom: clamp(var(--size-v-400), 5vw + 5em, var(--size-v-600));
+  margin-bottom: clamp(var(--size-v-100), 3vw + 0.5rem, var(--size-v-200));
 }
 
 .dialog__loader {
@@ -313,13 +356,13 @@ a:where(:hover, :focus, :focus-visible) {
 }
 
 .dialog__loader__icon {
-  --dialog-loader-icon-size: clamp(var(--size-v-400), 5vw + 5em, var(--size-v-600));
-  --dialog-loader-decoration-size: clamp(var(--size-v-50), 5vw + 5em, var(--size-v-100));
+  --dialog-loader-icon-size: clamp(var(--size-v-400), 5vw + 0.5rem, var(--size-v-600));
+  --dialog-loader-decoration-size: clamp(var(--size-v-50), 5vw + 0.5rem, var(--size-v-100));
 
   display: grid;
   place-items: center;
   margin-inline: auto;
-  font-size: clamp(var(--fz-900), 5vw + 5em, var(--fz-1200));
+  font-size: clamp(var(--fz-900), 5vw + 1rem, var(--fz-1200));
   width: var(--dialog-loader-icon-size);
   height: var(--dialog-loader-icon-size);
   border-radius: 50%;
