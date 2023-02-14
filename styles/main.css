@@ -356,7 +356,7 @@ a:where(:hover, :focus, :focus-visible) {
 }
 
 .dialog__loader__icon {
-  --dialog-loader-icon-size: clamp(var(--size-v-400), 5vw + 0.5rem, var(--size-v-600));
+  --dialog-loader-icon-size: clamp(var(--size-v-600), 5vw + 0.5rem, var(--size-v-800));
   --dialog-loader-decoration-size: clamp(var(--size-v-50), 5vw + 0.5rem, var(--size-v-100));
 
   display: grid;
